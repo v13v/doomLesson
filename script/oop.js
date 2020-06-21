@@ -17,7 +17,6 @@ const incomePeriodValue = document.querySelector('.income_period-value');
 const targetMonthValue = document.querySelector('.target_month-value');
 const inputSalarAymount = document.querySelector('.salary-amount');
 const inputIncomeTitle = document.querySelector('input.income-title');
-//const inputIncomeAmount = document.querySelector('.income-amount');
 const inputExpensesTitle = document.querySelector('.expenses-title');
 let  expensesItems = document.querySelectorAll('.expenses-items');//
 let incomeItems = document.querySelectorAll('.income-items');
