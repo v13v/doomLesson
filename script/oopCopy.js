@@ -1,3 +1,4 @@
+
 'use strict';
 
 const start = document.getElementById('start');
@@ -30,7 +31,7 @@ const PeriodSelect = document.querySelector('.period-select');
  let periodAmount = document.querySelector('.period-amount');
 let inpAll =  document.querySelectorAll('input[type=text]');
 let cancel =document.querySelector('#cancel');
-let depositCheckmark = document.querySelector('#deposit-check');
+
 
 const isText = function(data){
   const pattern = new RegExp('[а-яё]','gi');
@@ -128,9 +129,7 @@ let appData = {
             }
             
         })
-        depositCheckmark.checked = false;
-        periodAmount.textContent = 1;
-        PeriodSelect.value = 1
+        
         },
 
     showResult(){
@@ -269,4 +268,3 @@ PeriodSelect.addEventListener('input',appData.showChengeRange);
 
 
  appData.getInfoDeposit(); 
- 
