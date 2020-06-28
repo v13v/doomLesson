@@ -31,7 +31,7 @@ const PeriodSelect = document.querySelector('.period-select');
 const periodAmount = document.querySelector('.period-amount');
 const inpAll =  document.querySelectorAll('input[type=text]');
 const cancel =document.querySelector('#cancel');
-
+const depositCheckmark = document.querySelector('#deposit-check');
 
 const isText = (data)=>{
   const pattern = new RegExp('[а-яё]','gi');
@@ -117,6 +117,9 @@ reset (){
         }
         
     })
+    depositCheckmark.checked = false;
+        periodAmount.textContent = 1;
+        PeriodSelect.value = 1;
 }
 
 showResult(){
