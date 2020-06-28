@@ -1,6 +1,5 @@
 
 'use strict';
-
 const start = document.getElementById('start');
 const btnPluses = document.getElementsByTagName('button');
 const btnPlusIncome = btnPluses[0];

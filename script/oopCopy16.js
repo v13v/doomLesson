@@ -33,6 +33,7 @@ const cancel =document.querySelector('#cancel');
 const depositBank = document.querySelector('.deposit-bank');
 const depositAmount = document.querySelector('.deposit-amount');
 const depositPercent = document.querySelector('.deposit-percent');
+const depositCheckmark = document.querySelector('#deposit-check');
 
 const isText = (data)=>{
   const pattern = new RegExp('[а-яё]','gi');
@@ -118,6 +119,17 @@ reset (){
         }
         
     })
+    depositCheckmark.checked = false;
+        periodAmount.textContent = 1;
+        PeriodSelect.value = 1;
+
+        this.deposit = false;
+        depositBank.style.display = 'none';
+        depositAmount.style.display = 'none';
+        depositBank.value = '';
+        depositAmount.value = '';
+        depositPercent.value = '';
+        depositBank.removeEventListener('change',this.changePercent)
 }
 
 showResult(){
@@ -129,12 +141,12 @@ showResult(){
     targetMonthValue.value = Math.ceil(this.getTargetMonth());
     incomePeriodValue.value = this.calcSavedMoney();
    
-    PeriodSelect.addEventListener('input', function(){
+    PeriodSelect.addEventListener('input', ()=>{
         incomePeriodValue.value = this.calcSavedMoney();
     });
 }
          
-addIncomeBlock = ()=>{
+addIncomeBlock (){
     let clonIncomeItems = incomeItems[0].cloneNode(true);
     incomeItems[0].parentNode.insertBefore(clonIncomeItems,btnPlusIncome);
     incomeItems = document.querySelectorAll('.income-items');
@@ -240,7 +252,15 @@ showChengeRange = ()=>{
 changePercent(){
     const valueselect = this.value;
     if(valueselect === 'other'){
-        //--
+        depositPercent.style.display = 'inline-block';
+           depositPercent.addEventListener('input', function(){
+            this.value = this.value.replace(/[^\d]/g, '');
+               if(this.value > 100){  
+                start.disabled = true           
+                alert('число вне диапазона от 0 до 100')                
+               }else if(this.value < 100)
+               start.disabled = false        
+           });    
     }else{
         depositPercent.value = valueselect;
     }
@@ -252,13 +272,11 @@ depositHandler(){
         this.deposit = true;
         depositBank.style.display = 'inline-block';
         depositAmount.style.display = 'inline-block';
-        depositPercent.style.display = 'inline-block';
         depositBank.addEventListener('change',this.changePercent)
     }else{
         this.deposit = false;
         depositBank.style.display = 'none';
         depositAmount.style.display = 'none';
-        depositPercent.style.display = 'none';
         depositBank.value = '';
         depositAmount.value = '';
         depositPercent.value = '';
