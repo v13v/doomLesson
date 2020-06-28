@@ -60,7 +60,7 @@ class AppData {
     
 
 
-check = ()=>{
+check (){
     if(inputSalarAymount.value === ''){
         start.removeAttribute('disabled');
     };
@@ -133,7 +133,7 @@ showResult(){
     });
 }
          
-addIncomeBlock = ()=>{
+addIncomeBlock (){
     const clonIncomeItems = incomeItems[0].cloneNode(true);
     incomeItems[0].parentNode.insertBefore(clonIncomeItems,btnPlusIncome);
     incomeItems = document.querySelectorAll('.income-items');
@@ -155,7 +155,7 @@ getIncome (){
     }
 }
 
-addExpensesBlock = ()=>{
+addExpensesBlock (){
     const clonExpensesItems = expensesItems[0].cloneNode(true);
     expensesItems[0].parentNode.insertBefore(clonExpensesItems,btnPlusExpenses);
     expensesItems = document.querySelectorAll('.expenses-items');
@@ -236,7 +236,7 @@ calcSavedMoney (){
     return this.budgetMonth * PeriodSelect.value;
 }
 
-showChengeRange = ()=>{
+showChengeRange (){
     periodAmount.textContent = event.target.value;
 }
 
